@@ -94,7 +94,7 @@ public class PuzzleMaster : MonoBehaviour
     private void LoadNextPuzzle()
     {
         if (_audioSource.isPlaying) _audioSource.Stop();
-#if UNITY_EDITOR
+
         if (hasNextPuzzle)
         {
             GameEvent.SetNextPuzzle(nextPuzzle);
@@ -104,10 +104,9 @@ public class PuzzleMaster : MonoBehaviour
         {
             Invoke(nameof(Win), 1);
         }
-#else
+
         string puzzleName = _puzzleAndNextPuzzle[SceneManager.GetActiveScene().name];
         SceneManager.LoadScene(puzzleName);
-#endif
     }
 
     /// <summary>
